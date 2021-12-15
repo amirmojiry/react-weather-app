@@ -14,12 +14,23 @@ export const App = () => {
 
   const [weatherInfo, setWeatherInfo] = useState();
 
+  const twoDigits = (num) => {
+    const stringNum = num + '';
+    const stringLen = stringNum.length;
+
+    if (stringLen === 1) {
+      return '0'+stringNum;
+    }
+    return stringNum;
+    
+  };
+
   const fahToCelTemperature = (fahDeg) => {
     return (fahDeg-32)/(5/9);
   }
 
   const avgCelTemperature = (min, max) => {
-    return (fahToCelTemperature(max)-fahToCelTemperature(min)) / 2;
+    return ((fahToCelTemperature(max)-fahToCelTemperature(min)) / 2).toFixed(1);
   }
 
   useEffect( () => {
@@ -35,7 +46,7 @@ export const App = () => {
         .map(df => {
           return {
             temperature: avgCelTemperature(df.Temperature.Minimum.Value, df.Temperature.Maximum.Value),
-            icon: df.Day.Icon,
+            icon: twoDigits(df.Day.Icon),
             desc: df.Day.IconPhrase,
           };
         }))
@@ -44,7 +55,7 @@ export const App = () => {
   }, [cityKey]);
 
   return (
-    <div>
+    <div className="bg-gray-200 h-screen">
       <Header />
       <CitySearch 
         onFound={
