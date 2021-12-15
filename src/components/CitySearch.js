@@ -6,7 +6,7 @@ export const CitySearch = ( { onFound }) => {
     const [cityName, setCityName] = useState('');
     
     const getCity = (cityName) => {
-        fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${cityName}`)
+        fetch(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${cityName}`)
         .then(res => res.json())
         .then(res => res[0])
         .then(res => {
