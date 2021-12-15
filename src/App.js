@@ -25,15 +25,15 @@ export const App = () => {
     
   };
 
-  const fahToCelTemperature = (fahDeg) => {
-    return (fahDeg-32)/(5/9);
-  }
-
-  const avgCelTemperature = (min, max) => {
-    return ((fahToCelTemperature(max)-fahToCelTemperature(min)) / 2).toFixed(1);
-  }
-
   useEffect( () => {
+
+    const fahToCelTemperature = (fahDeg) => {
+      return (fahDeg-32)/(5/9);
+    }
+
+    const avgCelTemperature = (min, max) => {
+      return ((fahToCelTemperature(max)-fahToCelTemperature(min)) / 2).toFixed(1);
+    }
 
     if (cityKey) {
       fetch(
