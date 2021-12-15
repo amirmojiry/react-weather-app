@@ -10,11 +10,13 @@ export const CitySearch = ( { onFound }) => {
         .then(res => res.json())
         .then(res => res[0])
         .then(res => {
-            onFound({
-                name: res.LocalizedName,
-                key: res.Key,
-                country: res.Country.ID
-            });
+            if (res !== undefined) {
+                onFound({
+                    name: res.LocalizedName,
+                    key: res.Key,
+                    country: res.Country.ID
+                });
+            }
         });
     };
     return (
