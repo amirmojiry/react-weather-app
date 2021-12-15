@@ -18,14 +18,34 @@ export const CitySearch = ( { onFound }) => {
         });
     };
     return (
-        <div className="search-box">
-            <input 
+        <div className="search-box mb-5 flex justify-center">
+            <input className="p-1 px-2 mx-1 rounded
+            outline-none text-gray-800"
                 placeholder="Type city name..."
                 value={cityName}
                 onChange={e => setCityName(e.target.value)}
             />
-            <button onClick={() => getCity(cityName)}>Search</button>
-            <button>My Location</button>
+            <button
+            className="text-base focus:outline-none mx-1
+            flex justify-center px-4 py-2 rounded font-bold
+            hover:bg-teal-200 
+            bg-teal-100 
+            text-teal-700 border
+            border-teal-600 transition"
+            onClick={() => getCity(cityName)}>
+                Search
+                </button>
+            <button
+            className="text-base focus:outline-none mx-1
+            flex justify-center px-4 py-2 rounded font-bold
+            hover:bg-gray-200  
+            bg-gray-100 
+            text-gray-700 
+            border
+            border-gray-600"
+            >
+                My Location
+                </button>
         </div>
     );
 }
